@@ -12,11 +12,12 @@ app.get("/users", async () => {
 });
 
 app.post("/users", async (request, reply) => {
-  const { name, email } = request.body;
+  const { name, email, password } = request.body;
   const user = await prisma.user.create({
     data: {
       name,
       email,
+      password
     },
   });
   return reply.status(201).send({ user });
